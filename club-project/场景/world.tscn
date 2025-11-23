@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://bds1f3kp15tpr" path="res://玩家/player.tscn" id="1_woglx"]
 [ext_resource type="Texture2D" uid="uid://c22gt68dtb31f" path="res://素材/场景/colormap.png" id="2_ehur6"]
-[ext_resource type="Script" uid="uid://co2k6141ukdu3" path="res://Scripts/Health.gd" id="2_t1wle"]
-[ext_resource type="Script" uid="uid://d3hm36dpxlxfr" path="res://Scripts/Buff.gd" id="3_nesln"]
+[ext_resource type="Script" uid="uid://co2k6141ukdu3" path="res://生命值组件/health.gd" id="2_t1wle"]
+[ext_resource type="Script" uid="uid://d3hm36dpxlxfr" path="res://Buff组件/Buff.gd" id="3_nesln"]
 [ext_resource type="Script" uid="uid://dy5ir8owatdvy" path="res://场景/camera_2d.gd" id="3_t1wle"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ehur6"]
