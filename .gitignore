@@ -14,3 +14,11 @@ export_credentials.cfg
 .mono/
 data_*/
 mono_crash.*.json
+club-project/ExeCode-Generation.py
+club-project/.vscode/settings.json
+
+
+.trae/
+.vscode/
+.trae/rules/project_rules.md
+doc/
