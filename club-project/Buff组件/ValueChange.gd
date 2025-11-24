@@ -11,7 +11,7 @@ var setModifiedValue: Callable
 
 ## 用于向[member functionList]里面添加函数
 func AddFunction(function: Callable) -> void:
-	if function == null:
+	if function.is_null():
 		return
 	if function in functionList:
 		return
@@ -19,12 +19,22 @@ func AddFunction(function: Callable) -> void:
 	## 每次添加函数都要更新一下数值
 	UpdateValue()
 	return
+## 用于从[member functionList]里面删除函数
+func RemoveFunction(function: Callable) -> void:
+	if function.is_null():
+		return
+	if function not in functionList:
+		return
+	functionList.erase(function)
+	## 每次删除函数都要更新一下数值
+	UpdateValue()
+	return
 
 ##更新数值[br]
 ##这个函数是类自己调用的，所以你们不用知道它咋用[br]
 func UpdateValue() -> void:
-	##先判断一下是不是空的，但好像没啥用，不知道为什么判断不出来
-	if getOriginalValue == null or setModifiedValue == null:
+	##先判断一下是不是空的
+	if getOriginalValue.is_null() or setModifiedValue.is_null():
 		print("getOriginalValue 或 setModifiedValue 是空的。\n 对应的组件被删掉了？")
 		print(self)
 		return
@@ -33,7 +43,7 @@ func UpdateValue() -> void:
 	## 然后依次调用所有函数，修改原始数值
 	for function in functionList:
 		## 每次调用函数都要判断一下，把空的函数给去掉
-		if function == null:
+		if function.is_null():
 			functionList.erase(function)
 			continue
 		originalValue = function.call(originalValue)
