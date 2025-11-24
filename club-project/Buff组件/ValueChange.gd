@@ -1,3 +1,4 @@
+##@experimental
 ##这个类将会用于实现Buff中修改数值的方法[br]
 ##服务于[res://Buff组件/Buff.gd]
 class_name ValueChange
@@ -20,6 +21,7 @@ func AddFunction(function: Callable) -> void:
 	UpdateValue()
 	return
 ## 用于从[member functionList]里面删除函数
+##@experimental: 这个函数可能会有性能问题，所以未来可能会修改
 func RemoveFunction(function: Callable) -> void:
 	if function.is_null():
 		return
@@ -31,12 +33,13 @@ func RemoveFunction(function: Callable) -> void:
 	return
 
 ##更新数值[br]
-##这个函数是类自己调用的，所以你们不用知道它咋用[br]
+##这个函数是类主要自己调用的，用于更新修改后的数值[br]
+##@experimental: 这个函数对[if getOriginalValue.is_null() or setModifiedValue.is_null()]的处理仍然有问题，后续会修改，但应该不影响调用它的方法
 func UpdateValue() -> void:
 	##先判断一下是不是空的
 	if getOriginalValue.is_null() or setModifiedValue.is_null():
-		print("getOriginalValue 或 setModifiedValue 是空的。\n 对应的组件被删掉了？")
-		print(self)
+		push_error("getOriginalValue 或 setModifiedValue 是空的。\n 对应的组件被删掉了？", self)
+		assert(false)#assert只会在调试模式生效。所以如果希望在发布版本中遇到错误时也可以处理，需要补充该处代码
 		return
 	## 先获取原始数值
 	var originalValue = getOriginalValue.call()
