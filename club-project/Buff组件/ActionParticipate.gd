@@ -22,7 +22,7 @@ func RemoveFunction(function: Callable) -> void:
 	functionList.erase(function)
 	return
 
-func Run(vararg args: Variant) -> void:
+func Run(args: Variant) -> void:
 	for function in functionList:
 		if function.is_null():
 			functionList.erase(function)
